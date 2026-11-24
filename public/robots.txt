@@ -1,0 +1,7 @@
+# robots.txt para o site institucional
+
+# Libera o site inteiro
+User-agent: *
+Allow: /
+
+Sitemap: https://lucasbelesa.adv.br/sitemap.xml

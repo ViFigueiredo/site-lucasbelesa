@@ -1,0 +1,11 @@
+# Cache e credenciais locais (Cloudflare Wrangler, ferramentas do editor)
+.wrangler/
+.dev.vars
+.env
+.env.*
+.claude/
+
+# Dependências e sistema
+node_modules/
+.DS_Store
+*.log

@@ -1,0 +1,15 @@
+{
+  "name": "site-lucasbelesa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional de Lucas Belesa Chabudé — estático, sem dependências de runtime.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node tests/check.mjs",
+    "assets": "bash scripts/build-brand-assets.sh",
+    "fonts": "node scripts/fetch-fonts.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

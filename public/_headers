@@ -1,0 +1,65 @@
+# Cabeçalhos de resposta para Cloudflare Workers com static assets.
+#
+# Sintaxe: linhas que começam com "/" são caminhos; linhas indentadas são
+# cabeçalhos. Comentários usam "#" (não /* */, que seria lido como caminho).
+#
+# CSP: restritivo, sem inline, sem eval, sem unsafe-inline.
+# Cache: longo para ativos, sem cache para HTML.
+# Não use `unsafe-inline` para style: o HTML não tem atributo style.
+
+# Segurança: vale para todas as respostas, não só para a página inicial.
+/*
+  Content-Security-Policy: default-src 'self'; object-src 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()
+  Strict-Transport-Security: max-age=63072000
+
+# HTML: sem cache.
+/
+  Cache-Control: no-cache
+
+# Ativos com nome fixo: cache longo e imutável.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: font/woff2
+
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicons e ícones na raiz publicada.
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+/assets/img/favicon-16.png
+  Cache-Control: public, max-age=86400
+
+/assets/img/favicon-32.png
+  Cache-Control: public, max-age=86400
+
+/assets/img/apple-touch-icon.png
+  Cache-Control: public, max-age=86400
+
+# robots.txt e sitemap: cache curto, para mudanças chegarem logo.
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+# CSS: sem cache, revalidado por ETag, para que mudanças de estilo cheguem logo.
+/assets/css/styles.css
+  Cache-Control: no-cache
+
+/assets/css/fonts.css
+  Cache-Control: no-cache
+
+# JS: sem cache, para que correções de config e comportamento cheguem logo.
+/assets/js/config.js
+  Cache-Control: no-cache
+
+/assets/js/main.js
+  Cache-Control: no-cache
+
+/assets/js/boot.js
+  Cache-Control: no-cache

@@ -1,0 +1,34 @@
+# Configuração do Cloudflare Workers com static assets.
+#
+# Publicado como Worker (não como Pages): o Wrangler 4.x delega "pages" ao
+# Cloudflare Workers, então o caminho atual é este. Não há código de servidor:
+# o Worker só entrega os arquivos de public/.
+
+name = "site-lucasbelesa"
+
+# Mantém a data de compatibilidade fixa para o runtime não mudar sozinho.
+compatibility_date = "2026-11-01"
+
+# Custom domains: a zona lucasbelesa.adv.br precisa estar ativa na conta Cloudflare.
+# O www é redirecionado ao domínio principal por Redirect Rule (no painel).
+routes = [
+  { pattern = "lucasbelesa.adv.br", custom_domain = true },
+  { pattern = "www.lucasbelesa.adv.br", custom_domain = true }
+]
+
+# Mantém o endereço de teste *.workers.dev ativo enquanto o DNS do domínio propaga
+# e depois, para testes. Desligue se não quiser URLs públicas extras.
+workers_dev = true
+preview_urls = true
+
+# Sem "main" e sem "pages_build_output_dir": é um site estático, o Wrangler
+# só precisa saber qual pasta servir.
+[assets]
+directory = "./public"
+
+# "auto-trailing-slash": /foo redireciona para /foo/ quando existe /foo/index.html,
+# e /foo/ serve o index. Padrão de sites estáticos, evita links quebrados.
+html_handling = "auto-trailing-slash"
+
+# Não há public/404.html, então não configuramos not_found_handling.
+# Se a página 404 for criada, adicione: not_found_handling = "404-page".
