@@ -13,7 +13,7 @@ Os dados de contato estão preenchidos. Todos vivem em **um único arquivo**
 | `whatsapp` | `5527992892844` (exibido como (27) 99289-2844) |
 | `telefone` | `(27) 99289-2844` (não é mais exibido no site; o contato é feito pelos ícones do rodapé, que usam `whatsapp`) |
 | `email` | `lucasbelesa.adv@gmail.com` |
-| `oab` | `OAB/ES 44153` (seccional ES assumida, a confirmar) |
+| `oab` | `OAB/ES 44.153` |
 | `cidade` | `Vila Velha/ES` |
 | `endereco` | `Vila Velha/ES` (sem rua, número ou CEP) |
 | `instagram` | `https://www.instagram.com/lucasbelesa.adv/` |

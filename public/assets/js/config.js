@@ -14,8 +14,7 @@ window.SITE_CONFIG = {
   email: 'lucasbelesa.adv@gmail.com',
 
   // Inscrição e seccional, no formato usado no rodapé.
-  // Seccional ES assumida pelo escritório em Vila Velha/ES.
-  oab: 'OAB/ES 44153',
+  oab: 'OAB/ES 44.153',
 
   cidade: 'Vila Velha/ES',
 

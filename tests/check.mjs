@@ -390,6 +390,7 @@ teste('A8 · config centralizada e placeholders documentados no README', () => {
   const obrigatorias = ['whatsapp', 'email', 'oab', 'cidade', 'endereco', 'instagram', 'pendentes'];
   const faltando = obrigatorias.filter((k) => !(k in cfg));
   if (faltando.length) falhar('chaves ausentes em SITE_CONFIG:', faltando);
+  if (cfg.oab !== 'OAB/ES 44.153') falhar('SITE_CONFIG.oab deve ser "OAB/ES 44.153"', cfg.oab);
   if (!Array.isArray(cfg.pendentes)) {
     throw new Error('SITE_CONFIG.pendentes deve ser uma lista (pode ser vazia)');
   }
